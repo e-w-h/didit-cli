@@ -19,7 +19,9 @@ switch (myArgs[0]) {
       if (data === '') {
         console.log(`This is the first time you've done it!`)
       } else {
-        console.log(`This is the data:\n ${data}`)
+        let times = data.trim().split('\n')
+        let lastTime = times[times.length - 1]
+        console.log(`The last time you did it was at: ${lastTime}`)
       }
       // We dont want to write to the file while we're reading it 
       // We call appendFile in the callback of readFile
