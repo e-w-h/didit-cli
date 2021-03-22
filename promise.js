@@ -41,7 +41,7 @@ function rfPromise(fp, encoding) {
 }
 
 function afPromise(fp, timestampString) {
-  return new Promise((resolve, reject) => {
+  return new Promise((_, reject) => {
     fs.appendFile(fp, timestampString, err => {
       if (err) {
         return reject(err)
