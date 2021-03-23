@@ -23,6 +23,7 @@ async function readAndAppend(fp, encoding, timestamp) {
     } else {
       let times = data.trim().split('\n')
       let lastTime = times[times.length - 1]
+      console.log(`The last time you did it was at: ${lastTime}`)
       return await afPromise(fp, timestamp)
     }
   } catch (error) {
