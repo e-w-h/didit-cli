@@ -15,14 +15,18 @@ switch (myArgs[0]) {
 }
 
 async function readAndAppend(fp, encoding, timestamp) {
-  let data = await rfPromise(fp, encoding)
-  if (data === '') {
-    console.log(`This is the first time you've done it!`)
-    return await afPromise(fp, timestamp)
-  } else {
-    let times = data.trim().split('\n')
-    let lastTime = times[times.length - 1]
-    return await afPromise(fp, timestamp)
+  try {
+    let data = await rfPromise(fp, encoding)
+    if (data === '') {
+      console.log(`This is the first time you've done it!`)
+      return await afPromise(fp, timestamp)
+    } else {
+      let times = data.trim().split('\n')
+      let lastTime = times[times.length - 1]
+      return await afPromise(fp, timestamp)
+    }
+  } catch (error) {
+    console.error(error)
   }
 }
 
